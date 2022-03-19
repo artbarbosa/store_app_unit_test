@@ -68,6 +68,17 @@ void main() {
       expect(() async => await repositoryImp.getAllProducts(),
           throwsA(isA<ProductError>()));
     });
+
+    test('Should Throw Dio Erro type sendTimeout Product Error', () async {
+      when(() => diohttpService.get(any())).thenThrow(
+        DioError(
+          type: DioErrorType.sendTimeout,
+          requestOptions: RequestOptions(path: ''),
+        ),
+      );
+      expect(() async => await repositoryImp.getAllProducts(),
+          throwsA(isA<ProductError>()));
+    });
   });
 
   group('ProductRepositoryImp - Get All Categories', () {
@@ -113,6 +124,17 @@ void main() {
       when(() => diohttpService.get(any())).thenThrow(
         DioError(
           type: DioErrorType.cancel,
+          requestOptions: RequestOptions(path: ''),
+        ),
+      );
+      expect(() async => await repositoryImp.getAllCategories(),
+          throwsA(isA<ProductCategoriesError>()));
+    });
+    test('Should Throw Dio Erro type sendTimeout Product Categories Error',
+        () async {
+      when(() => diohttpService.get(any())).thenThrow(
+        DioError(
+          type: DioErrorType.sendTimeout,
           requestOptions: RequestOptions(path: ''),
         ),
       );
@@ -173,6 +195,18 @@ void main() {
       expect(() async => await repositoryImp.getProductById(1),
           throwsA(isA<ProductError>()));
     });
+
+    test('Should Throw Dio Erro type sendTimeout Product Categories Error',
+        () async {
+      when(() => diohttpService.get(any())).thenThrow(
+        DioError(
+          type: DioErrorType.sendTimeout,
+          requestOptions: RequestOptions(path: ''),
+        ),
+      );
+      expect(() async => await repositoryImp.getProductById(1),
+          throwsA(isA<ProductError>()));
+    });
   });
   group('ProductRepositoryImp - Get Product By Category', () {
     test('Should return a List of Product Model', () async {
@@ -217,6 +251,18 @@ void main() {
       when(() => diohttpService.get(any())).thenThrow(
         DioError(
           type: DioErrorType.cancel,
+          requestOptions: RequestOptions(path: ''),
+        ),
+      );
+      expect(
+          () async => await repositoryImp.getProductByCategory('electronics'),
+          throwsA(isA<ProductError>()));
+    });
+
+    test('Should Throw Dio Erro type sendTimeout Product Error', () async {
+      when(() => diohttpService.get(any())).thenThrow(
+        DioError(
+          type: DioErrorType.sendTimeout,
           requestOptions: RequestOptions(path: ''),
         ),
       );
