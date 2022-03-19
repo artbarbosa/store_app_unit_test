@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app_unit_test/app/modules/product/screens/home/container/home_container.dart';
 
 class ProductRouter extends StatelessWidget {
   const ProductRouter({Key? key}) : super(key: key);
@@ -11,10 +12,11 @@ class ProductRouter extends StatelessWidget {
         if (settings.name == '/home') {
           return MaterialPageRoute(
             builder: (context) {
-              return  Container();
+              return  const HomeContainer();
             },
           );
         }
+        return null;
       },
     );
   }
