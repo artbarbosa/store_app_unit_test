@@ -37,7 +37,7 @@ class ProductRepositoryImp implements IProductRepository {
   @override
   Future<List<CategoryModel>> getAllCategories() async {
     try {
-      final response = await httpService.get(ApiConst.allProductsURL());
+      final response = await httpService.get(ApiConst.allCategoriesURL());
       final list = response.data as List<dynamic>;
       return list.map((e) => CategoryModel.fromJson(e)).toList();
     } on DioError catch (e, s) {
@@ -71,7 +71,7 @@ class ProductRepositoryImp implements IProductRepository {
       } else {
         throw ProductError(
           stackTrace: s,
-          label: 'ProductRepositoryImp-getAllCategories',
+          label: 'ProductRepositoryImp-getProductById',
           exception: e.error,
           errorMessage: e.message,
         );
@@ -95,7 +95,7 @@ class ProductRepositoryImp implements IProductRepository {
       } else {
         throw ProductError(
           stackTrace: s,
-          label: 'ProductRepositoryImp-getAllCategories',
+          label: 'ProductRepositoryImp-getProductByCategory',
           exception: e.error,
           errorMessage: e.message,
         );
