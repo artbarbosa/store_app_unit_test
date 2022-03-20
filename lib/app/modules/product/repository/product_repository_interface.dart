@@ -1,5 +1,5 @@
-import 'package:store_app_unit_test/app/modules/product/model/category_model.dart';
-import 'package:store_app_unit_test/app/modules/product/model/product_model.dart';
+import '../model/category_model.dart';
+import '../model/product_model.dart';
 
 abstract class IProductRepository {
   Future<List<ProductModel>> getAllProducts();

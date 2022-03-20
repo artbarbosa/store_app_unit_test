@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_app_unit_test/app/modules/product/screens/home/container/home_container.dart';
+import '../screens/detail/route/detail_arguments.dart';
+import '../screens/detail/route/detail_route.dart';
+import '../screens/home/route/home_route.dart';
 
 class ProductRouter extends StatelessWidget {
   const ProductRouter({Key? key}) : super(key: key);
@@ -12,7 +14,16 @@ class ProductRouter extends StatelessWidget {
         if (settings.name == '/home') {
           return MaterialPageRoute(
             builder: (context) {
-              return  const HomeContainer();
+              return const HomeRoute();
+            },
+          );
+        }
+        if (settings.name == '/detail') {
+          return MaterialPageRoute(
+            builder: (context) {
+              return DetailRoute(
+                arguments: settings.arguments as DetailArguments,
+              );
             },
           );
         }

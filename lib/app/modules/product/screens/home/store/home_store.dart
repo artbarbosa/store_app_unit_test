@@ -18,25 +18,36 @@ class HomeStore extends ValueNotifier<HomeState> {
 
   String category = '';
 
+  String error = '';
+
   Future<void> _getAllProducts() async {
     try {
       products = await repository.getAllProducts();
     } on ProductNoInternetConnection catch (e) {
-    } on ProductError catch (e) {}
+      error = e.errorMessage;
+    } on ProductError catch (e) {
+      error = e.errorMessage;
+    }
   }
 
   Future<void> _getProductsByCategory() async {
     try {
       products = await repository.getProductByCategory(category);
     } on ProductNoInternetConnection catch (e) {
-    } on ProductError catch (e) {}
+      error = e.errorMessage;
+    } on ProductError catch (e) {
+      error = e.errorMessage;
+    }
   }
 
   Future<void> _getAllCategories() async {
     try {
       categories = await repository.getAllCategories();
     } on ProductCategoriesNoInternetConnection catch (e) {
-    } on ProductCategoriesError catch (e) {}
+      error = e.errorMessage;
+    } on ProductCategoriesError catch (e) {
+      error = e.errorMessage;
+    }
   }
 
   Future<void> fetchProducts(String categorySearch) async {
@@ -50,7 +61,7 @@ class HomeStore extends ValueNotifier<HomeState> {
       }
       value = SuccessHomeState(products: products, categories: categories);
     } catch (e) {
-      value = ErrorHomeState(error: e.toString());
+      value = ErrorHomeState(error: error);
     }
   }
 }

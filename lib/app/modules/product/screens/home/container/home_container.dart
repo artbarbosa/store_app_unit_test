@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:store_app_unit_test/app/modules/product/screens/detail/route/detail_arguments.dart';
 import '../home_page.dart';
 import '../states/home_states.dart';
 import '../store/home_store.dart';
@@ -41,7 +42,17 @@ class _HomeContainerState extends State<HomeContainer> {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, idx) {
-            return Text(state.products[idx].title);
+            return TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/detail',
+                  arguments: DetailArguments(
+                    productId: state.products[idx].id,
+                  ),
+                );
+              },
+              child: Text(state.products[idx].title),
+            );
           },
           childCount: state.products.length,
         ),
