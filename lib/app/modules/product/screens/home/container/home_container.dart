@@ -16,7 +16,7 @@ class _HomeContainerState extends State<HomeContainer> {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      context.read<HomeStore>().fetchAllProducts();
+      context.read<HomeStore>().fetchProducts('');
     });
   }
 
@@ -41,7 +41,7 @@ class _HomeContainerState extends State<HomeContainer> {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, idx) {
-            return Container(height: 100.0);
+            return Text(state.products[idx].title);
           },
           childCount: state.products.length,
         ),
