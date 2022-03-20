@@ -17,8 +17,10 @@ class SuccessHomeState extends HomeState {
 }
 
 class ErrorHomeState extends HomeState {
-  final String error;
+  final String errorProduct;
+  final String errorCategory;
   ErrorHomeState({
-    required this.error,
+    required this.errorProduct,
+    required this.errorCategory,
   });
 }

@@ -62,7 +62,7 @@ class _HomeContainerState extends State<HomeContainer> {
     if (state is ErrorHomeState) {
       child = SliverToBoxAdapter(
         child: Center(
-          child: Text(state.error),
+          child: Text(state.errorProduct),
         ),
       );
     }
