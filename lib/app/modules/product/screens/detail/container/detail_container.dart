@@ -38,22 +38,13 @@ class _DetailContainerState extends State<DetailContainer> {
     }
 
     if (state is SuccessDetailState) {
-      child = SliverGrid(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        delegate: SliverChildBuilderDelegate(
-          (context, idx) {
-            return Text(state.product.title);
-          },
-        ),
-      );
+      child = Text(state.product.title);
     }
 
     if (state is ErrorDetailState) {
       child = SliverToBoxAdapter(
         child: Center(
-          child: Text(state.error),
+          child: Text(state.errorProduct),
         ),
       );
     }

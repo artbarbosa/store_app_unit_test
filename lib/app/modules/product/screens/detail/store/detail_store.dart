@@ -11,8 +11,6 @@ class DetailStore extends ValueNotifier<DetailState> {
 
   late ProductModel product;
 
-  String category = '';
-
   String error = '';
 
   Future<void> _getProductById(int productId) async {
@@ -31,7 +29,7 @@ class DetailStore extends ValueNotifier<DetailState> {
       await _getProductById(productId);
       value = SuccessDetailState(product: product);
     } catch (e) {
-      value = ErrorDetailState(error: error);
+      value = ErrorDetailState(errorProduct: error);
     }
   }
 }

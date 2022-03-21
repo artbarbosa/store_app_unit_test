@@ -14,8 +14,8 @@ class SuccessDetailState extends DetailState {
 }
 
 class ErrorDetailState extends DetailState {
-  final String error;
+  final String errorProduct;
   ErrorDetailState({
-    required this.error,
+    required this.errorProduct,
   });
 }

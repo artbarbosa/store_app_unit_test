@@ -69,7 +69,8 @@ class HomeStore extends ValueNotifier<HomeState> {
       }
       value = SuccessHomeState(products: products, categories: categories);
     } catch (e) {
-      value = ErrorHomeState(errorCategory: errorCategory,errorProduct:errorProduct );
+      value = ErrorHomeState(
+          errorCategory: errorCategory, errorProduct: errorProduct);
     }
   }
 }

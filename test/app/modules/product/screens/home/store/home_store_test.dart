@@ -46,6 +46,7 @@ void main() {
 
       expect(store.value, isA<SuccessHomeState>());
       expect(store.products[0].id, 1);
+      expect(store.products.length, 1);
     });
 
     test(
@@ -81,6 +82,7 @@ void main() {
 
       expect(store.value, isA<SuccessHomeState>());
       expect(store.products[0].id, 1);
+      expect(store.products.length, 1);
     });
 
     test(
