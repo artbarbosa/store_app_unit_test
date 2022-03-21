@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app_unit_test/app/modules/product/screens/detail/route/detail_arguments.dart';
+import '../components/grid_view_component.dart';
 import '../home_page.dart';
 import '../states/home_states.dart';
 import '../store/home_store.dart';
@@ -23,6 +24,9 @@ class _HomeContainerState extends State<HomeContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
+    final currentHeight = MediaQuery.of(context).size.height;
+
     final store = context.watch<HomeStore>();
     final state = store.value;
     Widget? child;
@@ -36,26 +40,10 @@ class _HomeContainerState extends State<HomeContainer> {
     }
 
     if (state is SuccessHomeState) {
-      child = SliverGrid(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        delegate: SliverChildBuilderDelegate(
-          (context, idx) {
-            return TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  '/detail',
-                  arguments: DetailArguments(
-                    productId: state.products[idx].id,
-                  ),
-                );
-              },
-              child: Text(state.products[idx].title),
-            );
-          },
-          childCount: state.products.length,
-        ),
+      child = GridViewComponent(
+        currentHeight: currentHeight,
+        currentWidth: currentWidth,
+        products: state.products,
       );
     }
 
