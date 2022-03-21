@@ -29,31 +29,85 @@ void main() {
     CategoryModel(category: "men's clothing")
   ];
 
-  setUpAll(() {
-    repository = ProductRepositoryMock();
-    repository = ProductRepositoryMock();
-    when(() => repository.getAllCategories())
-        .thenAnswer((_) async => categories);
-    store = HomeStore(repository: repository);
-  });
+  group('Home Store fetch Products - repoistory get all products ', () {
+    setUp(() {
+      repository = ProductRepositoryMock();
+      repository = ProductRepositoryMock();
+      when(() => repository.getAllCategories())
+          .thenAnswer((_) async => categories);
+      store = HomeStore(repository: repository);
+    });
 
-  test('Home Store fetch Products - repoistory get all products', () async {
-    when(() => repository.getAllProducts())
-        .thenAnswer((_) async => listProducts);
+    test('_getAllProducts Should return List ProductModel', () async {
+      when(() => repository.getAllProducts())
+          .thenAnswer((_) async => listProducts);
 
-    await store.fetchProducts('');
+      await store.fetchProducts('');
 
-    expect(store.value, isA<SuccessHomeState>());
-    expect(store.products[0].id, 1);
-  });
+      expect(store.value, isA<SuccessHomeState>());
+      expect(store.products[0].id, 1);
+    });
 
-  test('Home Store fetch Products - repoistory get all products', () async {
-    when(() => repository.getAllProducts())
-        .thenThrow(ProductNoInternetConnection());
+    test(
+        '_getAllProducts Should return ErrorHomeState - ProductNoInternetConnection',
+        () async {
+      when(() => repository.getAllProducts())
+          .thenThrow(ProductNoInternetConnection());
 
-    await store.fetchProducts('');
+      await store.fetchProducts('');
 
-    expect(store.value, isA<ErrorHomeState>());
-    expect(store.errorProduct.isNotEmpty, true);
+      expect(store.value, isA<ErrorHomeState>());
+      expect(store.errorProduct.isNotEmpty, true);
+    });
+    test('_getAllProducts Should return ErrorHomeState  - ProductError',
+        () async {
+      when(() => repository.getAllProducts()).thenThrow(ProductError(
+        errorMessage: 'test',
+        exception: 'test',
+        label: 'test',
+      ));
+
+      await store.fetchProducts('');
+
+      expect(store.value, isA<ErrorHomeState>());
+      expect(store.errorProduct.isNotEmpty, true);
+    });
+
+    test('_getProductsByCategory Should return List ProductModel', () async {
+      when(() => repository.getProductByCategory("men's clothing"))
+          .thenAnswer((_) async => listProducts);
+
+      await store.fetchProducts("men's clothing");
+
+      expect(store.value, isA<SuccessHomeState>());
+      expect(store.products[0].id, 1);
+    });
+
+    test(
+        '_getProductsByCategory Should return ErrorHomeState - ProductNoInternetConnection',
+        () async {
+      when(() => repository.getProductByCategory("men's clothing"))
+          .thenThrow(ProductNoInternetConnection());
+
+      await store.fetchProducts("men's clothing");
+
+      expect(store.value, isA<ErrorHomeState>());
+      expect(store.errorProduct.isNotEmpty, true);
+    });
+
+    test('_getProductsByCategory Should return ErrorHomeState  - ProductError',
+        () async {
+      when(() => repository.getProductByCategory("men's clothing"))
+          .thenThrow(ProductError(
+        errorMessage: 'test',
+        exception: 'test',
+        label: 'test',
+      ));
+
+      await store.fetchProducts("men's clothing");
+
+      expect(store.value, isA<ErrorHomeState>());
+      expect(store.errorProduct.isNotEmpty, true);
+    });
   });
 }
