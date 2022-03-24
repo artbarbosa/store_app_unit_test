@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app_unit_test/app/core/services/remote/dio_http_client_service.dart';
-import 'package:store_app_unit_test/app/modules/product/errors/product_errrors.dart';
+import 'package:store_app_unit_test/app/modules/product/errors/product_errors.dart';
 import 'package:store_app_unit_test/app/modules/product/model/category_model.dart';
 import 'package:store_app_unit_test/app/modules/product/model/product_model.dart';
 import 'package:store_app_unit_test/app/modules/product/repository/product_repository_imp.dart';

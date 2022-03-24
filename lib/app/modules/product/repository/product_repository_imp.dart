@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../../../core/const/api_consts.dart';
 import '../../../core/services/remote/http_client_service.dart';
-import '../errors/product_errrors.dart';
+import '../errors/product_errors.dart';
 import '../model/category_model.dart';
 import '../model/product_model.dart';
 import 'product_repository_interface.dart';

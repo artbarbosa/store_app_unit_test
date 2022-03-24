@@ -16,4 +16,17 @@ class DioHttpServiceImp implements IHttpService {
       queryParameters: queryParameters,
     );
   }
+
+  @override
+  Future<Response<T>> post<T>(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _dio.post<T>(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+    );
+  }
 }

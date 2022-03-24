@@ -17,14 +17,15 @@ class HomePage extends StatelessWidget {
                 Text(
                   'StoreZ',
                   style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Vectory',
-                      fontSize: 24),
+                    color: Colors.black,
+                    fontFamily: 'Vectory',
+                    fontSize: 24,
+                  ),
                 ),
               ],
             ),
           ),
-          child,
+          child
         ],
       ),
     );

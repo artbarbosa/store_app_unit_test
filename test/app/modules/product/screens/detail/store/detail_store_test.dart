@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:store_app_unit_test/app/modules/product/errors/product_errrors.dart';
+import 'package:store_app_unit_test/app/modules/product/errors/product_errors.dart';
 import 'package:store_app_unit_test/app/modules/product/model/product_model.dart';
 import 'package:store_app_unit_test/app/modules/product/repository/product_repository_interface.dart';
 import 'package:store_app_unit_test/app/modules/product/screens/detail/states/detail_states.dart';

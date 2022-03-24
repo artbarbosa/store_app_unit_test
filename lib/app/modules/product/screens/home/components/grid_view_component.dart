@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:store_app_unit_test/app/modules/product/model/category_model.dart';
 
 import '../../../model/product_model.dart';
 import '../../detail/route/detail_arguments.dart';
@@ -7,10 +9,12 @@ class GridViewComponent extends StatelessWidget {
   const GridViewComponent(
       {Key? key,
       required this.products,
+      required this.categories,
       required this.currentWidth,
       required this.currentHeight})
       : super(key: key);
   final List<ProductModel> products;
+  final List<CategoryModel> categories;
   final double currentWidth;
   final double currentHeight;
   @override

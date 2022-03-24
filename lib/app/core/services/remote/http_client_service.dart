@@ -5,4 +5,10 @@ abstract class IHttpService {
     String path, {
     Map<String, dynamic>? queryParameters,
   });
+
+    Future<Response<T>> post<T>(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  });
 }

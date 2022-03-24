@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../errors/product_errrors.dart';
+import '../../../errors/product_errors.dart';
 import '../../../model/product_model.dart';
 import '../../../repository/product_repository_interface.dart';
 import '../states/detail_states.dart';
